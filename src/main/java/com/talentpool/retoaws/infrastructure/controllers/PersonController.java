@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/person")
+@RequestMapping("/v1/person")
 @Tag(name = "Person API", description = "Operations related to Person")
 public class PersonController {
 

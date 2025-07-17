@@ -1,25 +1,30 @@
-server:
-  port: ${SERVER_PORT:8191}
-
 spring:
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: ""
+  application:
+    name: retoaws-person-api
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  
   jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
     properties:
       hibernate:
         "[format_sql]": true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+        "[show_sql]": false
+
+server:
+  port: ${SERVER_PORT:8092}
+  servlet:
+    context-path: /api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
 
 logging:
   level:
-    "[org.hibernate.SQL]": debug
-    "[org.hibernate.type.descriptor.sql.BasicBinder]": trace
+    "[com.talentpool.retoaws]": INFO
+    "[org.springframework.web]": INFO
