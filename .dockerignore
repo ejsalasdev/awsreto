@@ -1,0 +1,22 @@
+# Ignore Gradle cache and build artifacts
+.gradle/
+build/
+!build/libs/*.jar
+
+# Ignore IDE files
+*.iml
+.idea/
+.vscode/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore test resources
+src/test/
+
+# Ignore logs
+*.log
+
+# Ignore environment files
+.env
