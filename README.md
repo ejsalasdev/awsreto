@@ -39,11 +39,9 @@ This microservice is built with Java 17 and Spring Boot 3.x, following hexagonal
 ```
 DB_HOST=localhost
 DB_PORT=3306
-DB_NAME=retoaws_person_db
+DB_NAME=awsreto_person_db
 DB_USERNAME=root
 DB_PASSWORD=toor
-JWT_SECRET=your-secret-key
-JWT_EXPIRATION=86400000
 SERVER_PORT=8092
 ```
 
@@ -52,6 +50,20 @@ SERVER_PORT=8092
 - Minimum 80% coverage on domain logic
 - Code and documentation in English
 - Conventional commits and branching
+
+## Deployment (AWS/ECR/ECS)
+
+### Docker
+- Multi-stage Dockerfile included (`Dockerfile`)
+- `.dockerignore` for optimized builds
+- Build image: `docker build -t awsreto-person-api .`
+
+> Note: Environment variables in Dockerfile are defaults; real values are set in ECS Task Definition.
+
+## References
+- Swagger UI: `/swagger-ui.html`
+- Dockerfile and .dockerignore in project root
+
 
 ---
 > For technical questions, refer to the Swagger documentation and the tests in `src/test/java/com/talentpool/retoaws/domain/usecases/PersonUseCaseTest.java`.
