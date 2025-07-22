@@ -38,6 +38,8 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'com.h2database:h2:2.2.224'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'io.awspring.cloud:spring-cloud-aws-starter-secrets-manager:3.0.3'
+	implementation 'io.awspring.cloud:spring-cloud-aws-starter-parameter-store:3.0.3'
 }
 
 jacoco {
