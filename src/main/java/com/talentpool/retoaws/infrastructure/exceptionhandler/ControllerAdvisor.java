@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.talentpool.retoaws.domain.exceptions.PersonAlreadyExistsException;
 import com.talentpool.retoaws.domain.exceptions.PersonNotFoundException;
 
+import com.talentpool.retoaws.infrastructure.exceptions.SimulatedInternalServerErrorException;
+
 @ControllerAdvice
 public class ControllerAdvisor {
 
@@ -24,6 +26,13 @@ public class ControllerAdvisor {
     public ResponseEntity<ExceptionResponse> handlePersonAlreadyExistsException(
             PersonAlreadyExistsException exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new ExceptionResponse(exception.getMessage(), LocalDateTime.now()));
+    }
+
+    @ExceptionHandler(SimulatedInternalServerErrorException.class)
+    public ResponseEntity<ExceptionResponse> handleSimulatedInternalServerErrorException(
+            SimulatedInternalServerErrorException exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ExceptionResponse(exception.getMessage(), LocalDateTime.now()));
     }
 

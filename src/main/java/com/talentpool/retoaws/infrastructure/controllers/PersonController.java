@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.talentpool.retoaws.application.dto.PersonRequestDTO;
 import com.talentpool.retoaws.application.dto.PersonResponseDTO;
 import com.talentpool.retoaws.application.handlers.PersonHandler;
+import com.talentpool.retoaws.infrastructure.exceptions.SimulatedInternalServerErrorException;
+import com.talentpool.retoaws.infrastructure.utils.InfrastructureConstants;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -38,5 +40,10 @@ public class PersonController {
         return new ResponseEntity<>(
                 personHandler.getPerson(identificationNumber),
                 HttpStatus.OK);
+    }
+
+    @GetMapping("/test-error")
+    public ResponseEntity<String> testError() {
+        throw new SimulatedInternalServerErrorException(InfrastructureConstants.SIMULATED_5XX_ERROR_MESSAGE);
     }
 }
